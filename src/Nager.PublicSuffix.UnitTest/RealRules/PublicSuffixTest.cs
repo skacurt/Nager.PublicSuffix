@@ -25,26 +25,25 @@ namespace Nager.PublicSuffix.UnitTest.RealRules
             }
         }
 
-        [DataTestMethod]
         [DataRow(null)]
+        [TestMethod]
         public void ParseNullDomainCheck(string domain)
         {
             this.CheckPublicSuffix(domain, null);
         }
 
-        [DataTestMethod]
         [DataRow(".com")]
         [DataRow(".example")]
         [DataRow(".example.com")]
         [DataRow(".example.example")]
-        [ExpectedException(typeof(ParseException))]
+        [TestMethod]
         public void ParseInvalidDomainCheck(string domain)
         {
-            this.CheckPublicSuffix(domain, null);
+            Assert.ThrowsExactly<ParseException>(() => this.CheckPublicSuffix(domain, null));
         }
 
-        [DataTestMethod]
         [DataRow("example")]
+        [TestMethod]
         public void ParseNotUsedTopLevelDomain_(string domain)
         {
             this.CheckPublicSuffix(domain, null);
@@ -120,7 +119,6 @@ namespace Nager.PublicSuffix.UnitTest.RealRules
             this.CheckPublicSuffix("www.test.k12.ak.us", "test.k12.ak.us");
         }
 
-        [DataTestMethod]
         [DataRow("COM")]
         [DataRow("com")]
         [DataRow("公司.cn")]
@@ -150,6 +148,7 @@ namespace Nager.PublicSuffix.UnitTest.RealRules
         [DataRow("ec2-34-206-8-177.compute-1.amazonaws.com")]
         [DataRow("s3-website.us-east-2.amazonaws.com")]
         [DataRow("test.stg.dev")]
+        [TestMethod]
         public void TldCheck(string domain)
         {
             this.CheckPublicSuffix(domain, null);

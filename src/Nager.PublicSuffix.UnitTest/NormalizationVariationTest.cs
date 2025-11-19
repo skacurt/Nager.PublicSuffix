@@ -52,14 +52,13 @@ namespace Nager.PublicSuffix.UnitTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ParseException))]
         public void UnderscoreBasedVariationsInvalid()
         {
             // These domains are treated as invalid and produce null via the Uri normalization method.
             // def._ghi.jkl.com is valid but
             // abc.def._ghi.jkl.com is invalid.
             // It can't be correct that adding abc. in front of a valid domain makes it invalid
-            this.PerformParsingCheck("abc.def._ghi.jkl.com", null, "jkl.com");
+            Assert.ThrowsExactly<ParseException>(() => this.PerformParsingCheck("abc.def._ghi.jkl.com", null, "jkl.com"));
         }
 
         [TestMethod]
@@ -96,17 +95,16 @@ namespace Nager.PublicSuffix.UnitTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ParseException))]
         public void DashBasedVariationsInvalid()
         {
             // Adding sub domains to these examples demonstrates how the Uri validation behaves in an unexpected way.
             // For example "sub.-example.com" is valid but "double.sub.-example.com" is not.
 
-            this.PerformParsingCheck("sub.example.-com", null, "example.-com");
-            this.PerformParsingCheck("sub.example.-com-", null, "example.-com-");
-            this.PerformParsingCheck("double.sub.-example.com", null, "-example.com");
-            this.PerformParsingCheck("double.sub.example.-com", null, "example.-com");
-            this.PerformParsingCheck("double.sub.example.-com-", null, "example.-com-");
+            Assert.ThrowsExactly<ParseException>(() => this.PerformParsingCheck("sub.example.-com", null, "example.-com"));
+            Assert.ThrowsExactly<ParseException>(() => this.PerformParsingCheck("sub.example.-com-", null, "example.-com-"));
+            Assert.ThrowsExactly<ParseException>(() => this.PerformParsingCheck("double.sub.-example.com", null, "-example.com"));
+            Assert.ThrowsExactly<ParseException>(() => this.PerformParsingCheck("double.sub.example.-com", null, "example.-com"));
+            Assert.ThrowsExactly<ParseException>(() => this.PerformParsingCheck("double.sub.example.-com-", null, "example.-com-"));
         }
 
         private void PerformParsingCheck(string domain, string expectedRegistrableDomain_UriVersion, string expectedRegistrableDomain_IdnVersion)

@@ -8,45 +8,45 @@ namespace Nager.PublicSuffix.UnitTest
     public class TldRuleTest
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "RuleData is empty")]
         public void InvalidRuleTest1()
         {
-            new TldRule("");
+            var ex = Assert.ThrowsExactly<ArgumentException>(() => new TldRule(""));
+            Assert.AreEqual("RuleData is empty", ex.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "RuleData is empty")]
         public void InvalidRuleTest2()
         {
-            new TldRule(null);
+            var ex = Assert.ThrowsExactly<ArgumentException>(() => new TldRule(null));
+            Assert.AreEqual("RuleData is empty", ex.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException), "Wildcard syntax not correct")]
         public void InvalidRuleTest3()
         {
-            new TldRule("*com");
+            var ex = Assert.ThrowsExactly<FormatException>(() => new TldRule("*com"));
+            Assert.AreEqual("Wildcard syntax not correct", ex.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException), "Wildcard syntax not correct")]
         public void InvalidRuleTest4()
         {
-            new TldRule("*bar.foo");
+            var ex = Assert.ThrowsExactly<FormatException>(() => new TldRule("*bar.foo"));
+            Assert.AreEqual("Wildcard syntax not correct", ex.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException), "Rule contains invalid empty part")]
         public void InvalidRuleTest5()
         {
-            new TldRule(".com");
+            var ex = Assert.ThrowsExactly<FormatException>(() => new TldRule(".com"));
+            Assert.AreEqual("Rule contains empty part", ex.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException), "Rule contains invalid empty part")]
         public void InvalidRuleTest6()
         {
-            new TldRule("www..com");
+            var ex = Assert.ThrowsExactly<FormatException>(() => new TldRule("www..com"));
+            Assert.AreEqual("Rule contains empty part", ex.Message);
         }
 
         [TestMethod]

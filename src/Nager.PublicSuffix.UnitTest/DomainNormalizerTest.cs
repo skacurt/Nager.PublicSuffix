@@ -11,7 +11,7 @@ namespace Nager.PublicSuffix.UnitTest
         [DataRow("HTTPS://microsoft.com")]
         [DataRow("HTTPS://Microsoft.com")]
         [DataRow("HTTPS://MICROSOFT.COM")]
-        [DataTestMethod]
+        [TestMethod]
         public void UriDomainNormalizerTest(string domain)
         {
             var domainNormalizer = new UriDomainNormalizer();
@@ -26,7 +26,7 @@ namespace Nager.PublicSuffix.UnitTest
 
         [DataRow("xn--frisr-mua.com")]
         [DataRow("XN--frisr-mua.com")]
-        [DataTestMethod]
+        [TestMethod]
         public void IdnMappingDomainNormalizerTest(string domain)
         {
             var domainNormalizer = new IdnMappingDomainNormalizer();

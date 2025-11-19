@@ -37,7 +37,7 @@ namespace Nager.PublicSuffix.UnitTest
 
             var domainDataStructure = localFileRuleProvider.GetDomainDataStructure();
 
-            Assert.AreEqual(1460, domainDataStructure.Nested.Count);
+            Assert.HasCount(1460, domainDataStructure.Nested);
         }
     }
 }
