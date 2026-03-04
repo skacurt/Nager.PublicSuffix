@@ -24,9 +24,9 @@
 
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net10.0</TargetFrameworks>
 	  
-    <Version>3.7.0</Version>
+    <Version>3.8.0</Version>
   </PropertyGroup>
  
   <ItemGroup>
@@ -40,8 +40,8 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
   </ItemGroup>
 
 </Project>

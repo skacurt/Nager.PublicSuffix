@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Nager.PublicSuffix.TestConsole/Nager.PublicSuffix.TestConsole.csproj" />
+  <Project Path="Nager.PublicSuffix.UnitTest/Nager.PublicSuffix.UnitTest.csproj" />
+  <Project Path="Nager.PublicSuffix/Nager.PublicSuffix.csproj" />
+</Solution>

@@ -24,7 +24,7 @@ namespace Nager.PublicSuffix.UnitTest
             var cacheProvider = new LocalFileSystemCacheProvider();
             var webRuleProvider = new CachedHttpRuleProvider(loggerMock.Object, configuration, cacheProvider, httpClient);
             var domainDataStructure = await webRuleProvider.BuildAsync();
-            Assert.IsNotNull(domainDataStructure);
+            Assert.IsTrue(domainDataStructure);
         }
 
         [TestMethod]
